@@ -1,0 +1,4 @@
+.TextConnect .status_request {
+    display: flex;
+    gap: 15px;
+}
