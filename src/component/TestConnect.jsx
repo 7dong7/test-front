@@ -2,6 +2,12 @@ import axios from "axios";
 
 import "./TestConnect.css";
 
+import Button from "./Button.jsx";
+import RequestButton from "./RequestButton.jsx";
+import PathButton from "./PathButton.jsx";
+import RequestHeaderCookie from "./RequestHeaderCookie.jsx";
+import RequestHeader from "./RequestHeader.jsx";
+
 
 const api = axios.create({
     baseURL: 'http://localhost:8080',
@@ -10,20 +16,7 @@ const api = axios.create({
     }
 });
 
-import Button from "./Button.jsx";
-import RequestButton from "./RequestButton.jsx";
-import PathButton from "./PathButton.jsx";
-
 const TestConnect = () => {
-
-    // axios.get("http://localhost:8080/test")
-    //     .then(response => {
-    //         console.log(response.data);
-    //     })
-    //     .catch(error => {
-    //         console.log("Error", error);
-    //     });
-
 
     return (
         <div className={"TextConnect"}>
@@ -68,8 +61,10 @@ const TestConnect = () => {
 
             <br/><br/><br/>
             <div className={"status_request"}>
-                {/* 8. 백에서 path variable 을 받기 테스트 */}
-                <RequestButton text={"Header & Cookie 값 받기"} url={`/api/HeaderAndCookie`} api={api}/>
+                {/* 9. 백에서 Header & Cookie 값 받기 (받은 값 localStorage 에 담기*/}
+                <RequestHeaderCookie text={"Header & Cookie 값 받기"} url={`/api/HeaderAndCookie`} api={api}/>
+                {/* 10. localStorage 의 값 꺼내서 다시 요청하기 */}
+                <RequestHeader text={"LocalStorage 값 Header에 담아서 요청"} url={`/api/RequestHeader`} api={api}/>
             </div>
 
         </div>

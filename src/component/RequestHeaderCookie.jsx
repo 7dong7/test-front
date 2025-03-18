@@ -4,20 +4,18 @@ import {useState} from "react";
 import "./Button.css";
 
 
-const RequestButton = ({text, url, api}) => {
+const RequestHeaderCookie = ({text, url, api}) => {
     const [user, setUser] = useState({
         username: '',
         email: ''
     });
 
-    // 1. 테스트 연결 확인
     const connectTest = async () => {
-
-
         try {
             const response = await api({
                 method: "post",
                 url: url,
+                withCredentials: true,
                 data: {
                     username: "홍길",
                     email: "hong@gamil.com"
@@ -27,17 +25,14 @@ const RequestButton = ({text, url, api}) => {
             console.log(response);
             console.log(response.data);
             console.log(response.status);
+            console.log(response.headers["access"]);
 
-            setUser({
-                username: response.data.username,
-                email: response.data.email
-            })
+            localStorage.setItem("access", response.headers["access"]);
+
         } catch (error) {
             console.log("error: ", error);
         }
     };
-
-    console.log(user);
 
     return (
         <div className={"Button"}>
@@ -46,4 +41,4 @@ const RequestButton = ({text, url, api}) => {
     );
 }
 
-export default RequestButton;
+export default RequestHeaderCookie;
