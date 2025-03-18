@@ -5,8 +5,8 @@ import "./Button.css";
 const Button = ({text, url, api}) => {
 
     // 1. 테스트 연결 확인
-    const connectTest = () => {
-        api.get(url)
+    const requestTest = () => {
+        api.post(url)
             .then(response => {
                 console.log(response);
                 console.log("응답 상태 코드: ", response.status);
@@ -19,7 +19,7 @@ const Button = ({text, url, api}) => {
 
     return (
         <div className={"Button"}>
-            <button onClick={connectTest}>{text}</button>
+            <button onClick={requestTest}>{text}</button>
         </div>
     );
 }

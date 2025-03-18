@@ -5,9 +5,14 @@ import "./TestConnect.css";
 
 const api = axios.create({
     baseURL: 'http://localhost:8080',
+    headers: {
+        'Content-Type': 'application/json'
+    }
 });
 
 import Button from "./Button.jsx";
+import RequestButton from "./RequestButton.jsx";
+import PathButton from "./PathButton.jsx";
 
 const TestConnect = () => {
 
@@ -29,7 +34,7 @@ const TestConnect = () => {
             {/* 3. map 응답 테스트 */}
             <Button text={"(단순) map 응답 테스트"} url={"/api/map"} api={api}/>
 
-            <br />
+            <br/>
 
             {/* 4. 상태변환 String 응답 테스트 */}
             <div className={"status_request"}>
@@ -48,6 +53,19 @@ const TestConnect = () => {
                 <Button text={"(Ok 응답) map 응답 테스트"} url={"/api/statusMapOk"} api={api}/>
                 <Button text={"(Bad 응답) map 응답 테스트"} url={"/api/statusMapBad"} api={api}/>
             </div>
+
+            <br/>
+            <div className={"status_request"}>
+                <RequestButton text={"백으로 데이터 보내기"} url={"/api/requestData"} api={api}/>
+                {/*<Button text={"(Bad 응답) map 응답 테스트"} url={"/api/statusMapBad"} api={api}/>*/}
+            </div>
+
+            <br/>
+            <div className={"status_request"}>
+                <PathButton text={"경로 데이터 보내기"} url={`/api/path`} api={api}/>
+                {/*<Button text={"(Bad 응답) map 응답 테스트"} url={"/api/statusMapBad"} api={api}/>*/}
+            </div>
+
         </div>
     );
 }
