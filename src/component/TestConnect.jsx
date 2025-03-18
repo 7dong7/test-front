@@ -56,14 +56,20 @@ const TestConnect = () => {
 
             <br/>
             <div className={"status_request"}>
+                {/* 7. JSON 데이터를 백으로 보내기 테스트*/}
                 <RequestButton text={"백으로 데이터 보내기"} url={"/api/requestData"} api={api}/>
-                {/*<Button text={"(Bad 응답) map 응답 테스트"} url={"/api/statusMapBad"} api={api}/>*/}
             </div>
 
             <br/>
             <div className={"status_request"}>
+                {/* 8. 백에서 path variable 을 받기 테스트 */}
                 <PathButton text={"경로 데이터 보내기"} url={`/api/path`} api={api}/>
-                {/*<Button text={"(Bad 응답) map 응답 테스트"} url={"/api/statusMapBad"} api={api}/>*/}
+            </div>
+
+            <br/><br/><br/>
+            <div className={"status_request"}>
+                {/* 8. 백에서 path variable 을 받기 테스트 */}
+                <RequestButton text={"Header & Cookie 값 받기"} url={`/api/HeaderAndCookie`} api={api}/>
             </div>
 
         </div>

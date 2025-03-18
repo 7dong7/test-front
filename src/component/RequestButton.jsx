@@ -18,6 +18,7 @@ const RequestButton = ({text, url, api}) => {
             const response = await api({
                 method: "post",
                 url: url,
+                withCredentials: true,
                 data: {
                     username: "홍길",
                     email: "hong@gamil.com"
@@ -27,11 +28,13 @@ const RequestButton = ({text, url, api}) => {
             console.log(response);
             console.log(response.data);
             console.log(response.status);
+            console.log(response.headers["access"]);
+            localStorage.setItem("access", response.headers["access"]);
 
             setUser({
                 username: response.data.username,
                 email: response.data.email
-            })
+            });
         } catch (error) {
             console.log("error: ", error);
         }
