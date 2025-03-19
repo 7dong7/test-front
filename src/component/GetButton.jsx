@@ -1,0 +1,27 @@
+import axios from "axios";
+
+import "./Button.css";
+
+const GetButton = ({text, url, api}) => {
+
+    // 1. 테스트 연결 확인
+    const requestTest = () => {
+        api.get(url)
+            .then(response => {
+                console.log(response);
+                console.log("응답 상태 코드: ", response.status);
+                console.log("응답 데이터: ", response.data);
+            })
+            .catch(error => {
+                console.log("Error", error);
+            });
+    }
+
+    return (
+        <div className={"Button"}>
+            <button onClick={requestTest}>{text}</button>
+        </div>
+    );
+}
+
+export default GetButton;
